@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tỏ tình</title>
+    <style>
+      body {
+        text-align: center;
+        background-color: #ffe6e6;
+        font-family: Arial, sans-serif;
+      }
+      #container {
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      #yesBtn {
+        background-color: red;
+        color: white;
+      }
+      #noBtn {
+        background-color: gray;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><span id="confessorName">[Tên người tỏ tình]</span> muốn nói:</h1>
+    <div id="nameInputContainer">
+      <h2>Nhập tên của bạn:</h2>
+      <input type="text" id="userName" placeholder="Tên của bạn" />
+      <input type="text" id="confessor" placeholder="Tên người tỏ tình" />
+      <button onclick="startConfession()">Bắt đầu</button>
+    </div>
+    <div id="container" style="display: none">
+      <h2 id="question"></h2>
+      <button id="yesBtn" onclick="yesClick()">Đồng ý ❤️</button>
+      <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">
+        Không 😢
+      </button>
+    </div>
+    <script>
+      function startConfession() {
+        let name = document.getElementById("userName").value;
+        let confessor = document.getElementById("confessor").value;
+        if (name.trim() === "" || confessor.trim() === "") {
+          alert("Vui lòng nhập đầy đủ tên!");
+          return;
+        }
+        document.getElementById("nameInputContainer").style.display = "none";
+        document.getElementById("container").style.display = "block";
+        document.getElementById(
+          "question"
+        ).innerHTML = `Cậu có đồng ý làm người yêu tớ không, ${name}? 🥰`;
+        document.getElementById("confessorName").innerText = confessor;
+      }
+
+      function yesClick() {
+        let container = document.getElementById("container");
+        container.innerHTML = `<h2>Biết ngay mà! Tắm rửa sạch sẽ nằm ráo nước đợi anh sang nhé! ❤️🥰</h2>`;
+      }
+
+      function moveButton() {
+        let btn = document.getElementById("noBtn");
+        let maxX = window.innerWidth - btn.offsetWidth;
+        let maxY = window.innerHeight - btn.offsetHeight;
+        let targetX = Math.random() * maxX;
+        let targetY = Math.random() * maxY;
+        btn.style.position = "absolute";
+        btn.style.left = `${targetX}px`;
+        btn.style.top = `${targetY}px`;
+      }
+    </script>
+  </body>
+</html>
