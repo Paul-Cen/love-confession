@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tỏ tình ❤️</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #ffe6e6;
+        margin: 50px;
+      }
+      h2 {
+        color: #ff4d4d;
+      }
+      .container {
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+      }
+      button {
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: 0.3s;
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+      #yesBtn {
+        background-color: #ff4d4d;
+        color: white;
+      }
+      #noBtn {
+        background-color: #ccc;
+        color: black;
+        position: absolute;
+      }
+      @keyframes moveEffect {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(var(--x), var(--y));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Cậu có đồng ý làm người yêu tớ không? 🥰</h2>
+    <div class="container">
+      <button id="yesBtn" onclick="yesClick()">Đồng ý ❤️</button>
+      <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">
+        Không 😢
+      </button>
+    </div>
+    <script>
+      function yesClick() {
+        alert(
+          "Biết ngay mà! Tắm rữa sạch sẽ nằm ráo nước đợi anh sang nhé! ❤️🥰"
+        );
+      }
+      function moveButton() {
+        let btn = document.getElementById("noBtn");
+        let x =
+          Math.random() * (window.innerWidth - btn.offsetWidth) -
+          btn.offsetLeft;
+        let y =
+          Math.random() * (window.innerHeight - btn.offsetHeight) -
+          btn.offsetTop;
+        btn.style.setProperty("--x", x + "px");
+        btn.style.setProperty("--y", y + "px");
+        btn.style.animation = "moveEffect 0.5s ease-in-out";
+        setTimeout(() => {
+          btn.style.left = `${btn.offsetLeft + x}px`;
+          btn.style.top = `${btn.offsetTop + y}px`;
+          btn.style.animation = "";
+        }, 500);
+      }
+    </script>
+  </body>
+</html>
